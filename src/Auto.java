@@ -7,6 +7,18 @@ public class Auto {
     public String wlasciciel;
     public String cena;
 
+    // domyślny konstruktor bez argumentów
+    public Auto() {
+
+    }
+    public Auto(String marka, String model, int rok, int przebieg, String wlasciciel, String cena) {
+        this.marka = marka;
+        this.model = model;
+        this.rok = rok;
+        this.wlasciciel = wlasciciel;
+        this.cena = cena;
+    }
+
     public void jedz() {
         System.out.println("Jadęęęę !!!");
     }
