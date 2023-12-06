@@ -2,6 +2,12 @@ public class StudentChecker {
 
     public static void main(String[] args) {
 
+        String uczelnia = Student.nazwaUczelni;
+        System.out.println("Uczelnia bez obiektu - " + uczelnia);
+
+        Student.infoUczelnia();
+
+
         // tworzymy 3 obiekty studentów
         Student student1 = new Student();
         Student student2 = new Student();
@@ -13,6 +19,9 @@ public class StudentChecker {
         student1.nick = "MKowalczyk";
         student1.email = "mkowalczyk@test.pl";
         student1.numerIndeksu = 2101;
+        String uczelniaZObiektu = student1.nazwaUczelni;
+        System.out.println("uczelnia z obiektu - " + uczelniaZObiektu);
+        student1.infoUczelnia();
 
         student2.imie = "Józef";
         student2.nazwisko = "Marciniak";
@@ -43,6 +52,7 @@ public class StudentChecker {
            studenci[i].zaloguj();
            studenci[i].podajNumerIndeksu();
            studenci[i].podajEmail();
+
 
         }
 
