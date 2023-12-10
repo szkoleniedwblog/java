@@ -646,4 +646,58 @@ public class App {
 
 
 -----------
+Identyfikatry dostępu
+public
+protected
+private
+default
+wewnątrz metody mamy dostęp do wszystkich pól i metod z w/w identyfikatorami dostępu
+
+klasa będąca rozszerzeniem klasy nadrzędnej - dziedzicząca
+ma dostęp do pól i klas rodzica
+public
+protected
+
+default - bez identyfikatora dostepu 
+w klasie dzidziczącej -- dziecku - mamy dostep tylko w obrębie paczki
+to jest trochę taki identyfikator dostepu domyslny dla paczki
+
+Nie ma natomaist dostępu do pól i metod 
+private
+private - jest polem i metodą tylko dla tej klasy - nawet dzieci nie moga 
+
+Jezeli dostajemy się do klasy za pomoca utworzenia obiektu w tej samej paczce
+(nie ma żadnego powiązania - poprzez rozszerzenie klasy)
+to mamy dostep do wszystkich pol i metod poza private
+
+Jezeli dostajemy się do klasy za pomoca utworzenia obiektu w innej paczce
+(nie ma żadnego powiązania - poprzez rozszerzenie klasy)
+to mamy dostep tylko do public
+
+----------------------------
+gettery i settery
+getter pozwala nam tylko pobrac wartość z pola private
+setter pozwala nam ustawić wartośc w polu prywatnym, np po róznych sprawdzeniach
+
+    private String name = "Darek";
+
+    public String getName() {
+       return name;
+    }
+
+    public void setName(String name) {
+        // możemy tu zrobić szereg walidacji, które pilnują poprawności 
+        this.name = name;
+    }
+	
+Skrót Alt + Insert - możemy wygenerowac konstruktor, getter lub setter
+w InteliJ.
+
+----------------
+super - rozszerzenie
+użycie słówka super w klasie potomnej pozwala namna dostep
+nie tylko do konstruktora z klasy nadrzednej
+ale tez do wszystkich pól i metod z klasy nadrzednej. 
+Mozemy wywolac tę metode i ja np nadpisując uzupełnić o jakies dodatkowe działanie
+
 
