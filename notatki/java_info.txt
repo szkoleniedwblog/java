@@ -1,0 +1,649 @@
+HomePage - konwencja nazewnictwa Class
+LoginPage
+
+/*  */ - komentarz
+// - komentarz
+możemy zaznaczyć to co chcemy zakomentować i wcisnąć lctrl + lshift + /
+
+public class HomePage {
+	// zawartość klasy HomePage
+}
+
+Tworzymy repozytorium GITa z poziomu InteliJ - bezpośrednio
+Tworzymy gdzies katalog
+Wchodzimy do niego
+Prawym myszki otwieramy menu - wybieramy Git bash open here
+wpisujemy git init
+mamy repo gita
+
+W InteliJ wybieramy z menu File > New > projec from existing sources
+Wskazujemy utworzony wcześniej katalog i klikamy OK
+Zaznaczamy Create project from existing sources 
+Next > Next >Next > Finish
+
+MAmy już strukturkę z plikami InteliJ.
+Usuwamy pliczek gitignore na poziomie katalogu .idea - to są pliki intelij - których nie wersjonujemy
+Pozostałe pliki - Chcemy je wszystkie dodac do gitignore na poziomie całego projektu
+więc prawym na katalogu i szukamy opcji add to git ignore
+NAstępnie na liście plików do skomitowania - comitujemy gitignore
+rolbackujemy resztę plików
+
+W głównym katalogu java tworzymy katalog src
+i prawym na ten katalog > wybieramy Mark Directory as > Sources root (teraz intelij będzie wiedział że to katalog kodó źrółowych)
+Prawym twporzymy nowym plik javowy - HelloWorld - od razu pliczejk wskazuje do zmian lokalnych
+
+Później zmiany można skommitować
+
+---------------
+Typy danych
+
+Zmienne liczb całkowitych:
+
+byte nazwaZmiennej = 127;		// na jednym bajcie 
+short nazwaZmiennej = ;		// na dwóćh bajtach
+int nazwaZmiennej = ;			// na czterech bajtach
+long nazwaZmiennej = 1212121L;			// na ośmiu bajtach - na końcu zawsze L
+
+Zmienne liczb niecałkowitych 
+
+float nazwaZmiennej = 12.23232F		// do 6-7 cyfr po przecinku - na końcu zawsze F
+double nazwaZmiennej = 12.2121212D	// do 15 cyfr po przecinku - na końcu zawsze D
+
+Zmienne logiczne
+
+boolean prawda = true;
+boolean falsz = false;
+
+zmienne znakowe
+
+char znak = 'A';						// pojedynczy znak - ciapki pojedyncze
+
+Jeżeli chcemy użyć typów obiektowych w/w elementów to:
+Piszemy je wielką literą
+Zamiast int mamy Integer
+Zamiast char mamy Character
+String - nie ma typu prostego więc jest tylko z wielkiej i jest tylko obiektowym
+
+String ciagZnakow = "Hello World";		// ciąg znaków - tu Ciapki podwójne
+
+Typy Obiektowe
+Są to twory, które mogą przechowywać zmienne różnych typów + mogą oferować różne akcje - metody
+zawsze istnieje przynajmniej jedna metoda main
+w jej obrebie mogą być zmienne i metody
+
+public static void main(String[] args) {
+
+} 
+
+wywołanie zmiennej typu obiektowego
+wpisujemy nazwę zmiennej i kropkę - otwiera nam sie okno z dostępnymi metodami
+
+---------------
+Zmienne
+deklaracja 
+
+typZmiennej nazwaZmiennej ;
+
+String name;				// nie musi mieć od razu wartości
+String name = "Bartek";		// może miec od razu przypisaną wartość
+
+System.out.println(name);	// wyświetlenie na ekranie zmiennej
+
+Przykład:
+
+public class Zmienne {
+    public static void main(String[] args) {
+
+        int firstNumber;
+        int secondNumber;
+        int result;
+
+        String name = "Bartek";
+        firstNumber = 1;
+        secondNumber = 2;
+        result = firstNumber + secondNumber;
+
+        name = "Darek";
+        System.out.println(name);
+        System.out.println(result);
+    }
+}
+
+----------
+Operatory matematyczne
+
+public class OperatoryMatematyczne {
+
+    public static void main(String[] args) {
+
+        int firstNumber = 4;
+        int secondNumber = 6;
+        float thirdNumber = 4.0F;
+
+        int addiction = firstNumber + secondNumber;
+        int subtraction = firstNumber - secondNumber;
+        int multiplication = firstNumber * secondNumber;
+        float division = thirdNumber/secondNumber;
+        int mod = secondNumber%firstNumber;
+
+        System.out.println("Wynik dodawania "+addiction);
+        System.out.println("Wynik odejmowania "+subtraction);
+        System.out.println("Wynik mnożenia "+multiplication);
+        System.out.println("Wynik dzielenia "+division);
+        System.out.println("Różnica "+mod);
+
+        firstNumber+=secondNumber;      // firstNumber = firstNumber + secondNumber ;
+        System.out.println("Wynik dodawania "+firstNumber);
+        firstNumber-=secondNumber;      // firstNumber = firstNumber - secondNumber ;
+        System.out.println("Wynik odejmowania "+firstNumber);
+        firstNumber*=secondNumber;      // firstNumber = firstNumber * secondNumber ;
+        System.out.println("Wynik mnożenia "+firstNumber);
+        firstNumber/=secondNumber;      // firstNumber = firstNumber / secondNumber ;
+        System.out.println("Wynik dzielenia "+firstNumber);
+        firstNumber%=secondNumber;      // firstNumber = firstNumber % secondNumber ;
+        System.out.println("Wynik różnicy "+firstNumber);
+
+    }
+
+}
+
+-------------
+Inkrementacja i dekrementacja
+
+// zwiększanie lub zmniejszanie o jeden wartości zmiennych liczbowych
+public class InkrementacjaDekrementacja {
+    public static void main(String[] args) {
+
+        int a = 0;
+        // postinkrementacja - zwiększenie o jeden
+        int b = a++;
+        System.out.println("b = " + b);     // najpierw do b przypisujemy a = 0,
+        System.out.println("a = " + a);     // dopiero po tym zwięększamy a o 1
+		
+		// preinkrementacja - zwiększenie o jeden
+        int c = ++a;
+        System.out.println("a = " + a);     // najpierw a zwiększamy o 1
+        System.out.println("c = " + c);     // przypisujemy a do c
+
+
+        int d = 0;
+        // postdekrementacja - zmniejszenie o jeden
+        int e = d--;
+        System.out.println("e = " + e);     // najpierw do e przypisujemy d = 0,
+        System.out.println("d = " + d);     // dopiero po tym mniejszamy d o 1
+		
+		// predekrementacja - zmniejszenie o jeden
+        int f = --d;
+        System.out.println("d = " + d);     // najpierw d zmniejszamy o 1
+        System.out.println("f = " + f);     // przypisujemy d do f
+
+
+    }
+
+}
+
+----------------
+Pobieranie danych od użytkownika
+Tworzmy sobie jakąś klasę, w obebie klasy metodę main i 
+gdy w środku zaczniemy wpisywac słowo Scanner system rozpozna że istnieje taka klasa w java i dopisze
+linię z importem tej klasy 
+import java.util.Scanner; - dołączenie takiej klasy podtstawowej
+
+tworzymy nowy obiekt klasy Scanner o nazwie scanner
+Scanner scanner = new Scanner(System.in);
+
+odołujemy sie do zmiennej scanner i jednej z dostępnych metod nextLine();
+i to co ona zwróci przypisujemy do zmiennej name typu string.
+String name = scanner.nextLine();
+
+to co wprowadzone wyświetlamy na ekranie.
+System.out.println("Cześć " + name + " !");
+
+Przed linią z podaniem imienia wypisujemy na ekranie prośbę
+System.out.println("Podaj swoje imię:");
+
+Gdy chcemy zrobic inny program , np na pobranie liczby to trzeba zmienić definicję zmiennej do 
+której przypisujemy wartość wpisaną z klawiatury 
+i metodę scannera która wybieramy
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj dowolną liczbę całkowitą:");
+        int firstNumber = scanner.nextInt();
+
+        System.out.println("Druga potęga podanej liczby to  " + firstNumber * firstNumber);
+        System.out.println("Trzecia potęga podanej liczby to  " + firstNumber * firstNumber * firstNumber);
+
+
+
+---------------
+Podstawowy kalkulator
+
+import java.util.Scanner;
+
+// podstawowy kalkulator
+public class Calculator {
+
+    public static void main(String[] args) {
+
+        int liczba1 = 0;
+        int liczba2 = 0;
+
+        Scanner mainScanner = new Scanner(System.in);
+
+        System.out.print("Podaj dowolną liczbę całkowitą: ");
+        liczba1 = mainScanner.nextInt();
+        System.out.print("Podaj drugą liczbę całkowitą: ");
+        liczba2 = mainScanner.nextInt();
+
+
+        System.out.println("Podstawowe działania:");
+        System.out.println("Dodanie liczb = " + (liczba1 + liczba2));
+        System.out.println("Odjęcie liczb = " + (liczba1 - liczba2));
+        System.out.println("Mnożenie liczb = " + (liczba1 * liczba2));
+        System.out.println("Dzielenie liczb = " + (liczba1 / liczba2));
+        System.out.println("Reszta z dzielenia liczb = " + (liczba1 % liczba2));
+
+    }
+
+}
+
+-------------
+Operatory porównania
+    public static void main(String[] args) {
+
+    int firstNumber = 4;
+    int secondNumber = 6;
+
+        System.out.println(" Czy first > second? " + (firstNumber > secondNumber));
+        System.out.println(" Czy first < second? " + (firstNumber < secondNumber));
+        System.out.println(" Czy first >= second? " + (firstNumber >= secondNumber));
+        System.out.println(" Czy first <= second? " + (firstNumber <= secondNumber));
+        System.out.println(" Czy first = second? " + (firstNumber == secondNumber));
+        System.out.println(" Czy first <> second? " + (firstNumber != secondNumber));
+     
+    }
+
+----------------
+Operatory logiczne
+Działają na zmiennych logicznych i porównują w sposób logiczny te zmienne logiczne
+
+public static void main(String[] args) {
+
+        boolean firstNumber = true;
+        boolean secondNumber = false;
+        boolean thirdNumber = true;
+        boolean fourthNumber = false;
+
+        System.out.println(" Czy first && second? " + (firstNumber && secondNumber));
+        System.out.println(" Czy first && third? " + (firstNumber && thirdNumber));
+        System.out.println(" Czy first || second? " + (firstNumber || secondNumber));
+        System.out.println(" Czy second || fourth? " + (secondNumber || fourthNumber));
+        System.out.println(" Czy nie first ? " + (!firstNumber));
+        System.out.println(" Czy nie second? " + (!secondNumber));
+        System.out.println(" Czy nie (first && second)? " + (!(firstNumber && secondNumber)));
+
+
+    }
+
+-------------------
+instrukcja warunkowa if
+
+    public static void main(String[] args) {
+
+        String imie;
+        int wiek = 0;
+        boolean alkohol = false;
+        char ostatniZnak;
+
+        Scanner mojScanner = new Scanner(System.in);
+
+        System.out.println("Dzień dobry !!!");
+        System.out.print("Podaj swoje imię: ");
+        imie = mojScanner.nextLine();
+
+        if (imie == "") {
+            imie = "Drogi kliencie";
+        }
+
+        ostatniZnak = imie.charAt(imie.length() - 1);
+
+        System.out.print("Czy kupujesz alkohol? ");
+        alkohol = mojScanner.nextBoolean();
+
+        if (alkohol) {
+            System.out.print("Podaj wiek: ");
+            wiek = mojScanner.nextInt();
+        }
+
+        if (alkohol && wiek <= 0) {
+            System.out.println(imie + " oszukujesz !!! Nie można mieć takiego wieku.");
+        } else if (wiek < 18) {
+            if (ostatniZnak == 'a' || ostatniZnak == 'A') {
+                System.out.println(imie + " jesteś niepełnoletnia i nie możesz kupic alkoholu. Przykro mi.");
+            } else {
+                System.out.println(imie + " jesteś niepełnoletni i nie możesz kupic alkoholu. Przykro mi.");
+            }
+
+        }
+
+        System.out.println("Dziękujemy za zakupy !!! Zapraszamy ponownie.");
+    }
+	
+	---------------
+	instrukcja Switch
+	
+	    public static void main(String[] args) {
+
+        String danie;
+
+        Scanner mojScanner = new Scanner(System.in);
+        System.out.print("Co chcesz zamówić? ");
+        danie = mojScanner.nextLine();
+
+        switch (danie) {
+
+            case "Pizza":
+                System.out.println("Cena to 11 zł.");
+                break;
+            case "Frytki":
+                System.out.println("Cena to 44 zł.");
+                break;
+            case "Gulasz":
+                System.out.println("Cena to 33 zł.");
+                break;
+            case "Zapiekanka":
+                System.out.println("Cena to 22 zł.");
+                break;
+            default:
+                System.out.println("Nie mamy takiego dania.");
+ 
+        }
+
+    }
+	
+------------
+pętla for
+
+   public static void main(String[] args) {
+
+        int liczba = 100;
+
+        for (int i=1; i<=liczba; i++) {
+
+            if (i % 10 == 0) {
+                    System.out.println(i);
+                }
+
+            else {
+                if (i < 10) {
+                    System.out.print("0" + i + " ");
+                } else {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+
+    }	
+	
+----------
+petla while i do while
+
+   public static void main(String[] args) {
+
+        int numer = 0;
+
+        // pętla while
+        while(numer <= 20) {
+            if (numer < 10 ) {
+                System.out.println("Zmienna = 0" + numer);
+            } else {
+                System.out.println("Zmienna = " + numer);
+            }
+            numer++;
+        }
+        numer = 0;
+        // pętla do while
+         do {
+            if (numer < 10 ) {
+                System.out.println("Zmienna = 0" + numer);
+            } else {
+                System.out.println("Zmienna = " + numer);
+            }
+            numer++;
+        }
+        while(numer <= 20);
+
+    }
+	
+-------------
+Tablice
+
+ public static void main(String[] args) {
+
+        String[] imiona = new String[3];
+
+        imiona[0] = "Darek";
+        imiona[1] = "Marek";
+        imiona[2] = "Jarek";
+
+        System.out.println(imiona[0]);
+        System.out.println(imiona[1]);
+        System.out.println(imiona[2]);
+
+        int[] lottoNumbers = new int[] {1,2,3,4,5};
+        System.out.println(lottoNumbers[3]);
+        System.out.println(lottoNumbers[0]);
+
+        System.out.println(lottoNumbers.length);
+
+        System.out.println("Pętla for ");
+        for (int i=0; i<lottoNumbers.length; i++) {
+            System.out.println(lottoNumbers[i]);
+        }
+
+        System.out.println("Pętla do - while ");
+        int numer = 0;
+
+        do {
+            System.out.print(numer + " - ");
+            System.out.println(lottoNumbers[numer]);
+            numer++;
+        }
+        while (numer <= lottoNumbers.length - 1);
+
+    }
+	
+	
+--------------------
+Klasy - zawierają zmienne i metody
+    
+	public String wlasciciel;
+    public String cena;
+
+    public void jedz() {
+        System.out.println("Jadęęęę !!!");
+    }
+
+Wywoływane są przez utworzenie obiektu danej klasy i póxniej odwołanie przez
+ten obiekt do zmiennych lubwywołanie metod ktore coś robią na tych zmiennych
+
+       // tworzymy nowy obiekt na podstawie utworzonej klasy Auto
+        Auto mercedes = new Auto();
+
+        // deklarujemy zmienne w obiekcie mercedes
+        mercedes.marka = "Mercedes";
+        mercedes.model = "Klasa S";
+        mercedes.rok = 2011;
+        mercedes.przebieg = 120000;
+        mercedes.wlasciciel = "Pierwszy";
+        mercedes.cena = "67tys. PLN";
+
+        // wywolujemy metody dotepne w tym obiekcie (czy klasie)
+        mercedes.jedz();
+        mercedes.hamuj();
+        mercedes.info();
+		
+
+   // metoda która nic nie zwraca - void
+    public void sumujLiczbyDoStu() {
+    // public - rodzaj dostępu do metody
+    // void - co ma zwrócić metoda , jeżeli void - to nic nie zwraca
+    // może zwrócić int, może zwrócić dowolny obiekt, np nasz Student lub Auto lub String
+    // nazwa metody
+
+        int suma = 0;
+        System.out.println("Sumujemy liczby od 0 - 100:");
+        for (int i=0; i<=100; i++) {
+            System.out.print("Dodaję do " + suma + " wartość " + i);
+            suma = suma + i;
+            System.out.println(" Mam teraz: " + suma);
+        }
+        System.out.println("Ostatenie suma wynosi = " + suma);
+
+    }
+
+    // metoda która zwraca int - int
+    public int pobierzWynik() {
+        // public - rodzaj dostępu do metody
+        // int - co ma zwrócić metoda , jeżeli void - to nic nie zwraca
+        // nazwa metody
+
+        int suma = 0;
+        for (int i=0; i<=100; i++) {
+            suma = suma + i;
+        }
+        return suma;
+    }
+
+    public int sumujLiczbyOdDo(int liczbaOd, int liczbaDo, String jakisInny) {
+        // przekazujemy dowolne paranetry do metody;
+        int suma = 0;
+        for (int i = liczbaOd; i<=liczbaDo; i++) {
+            suma = suma + i;
+        }
+        System.out.println(jakisInny + liczbaOd + " - " + liczbaDo);
+        return suma;
+
+    }
+	
+	
+-----------
+Pola i metody statyczne
+
+Sa to pola i metody chrakterystyczne dla danej klasy 
+a nie obiektu powstałego na bazie danej klasy
+
+metoda statyczna ma dostęp do pól statycznych w obębie klasa
+metoda statyczna moze wywolywac inne metody statyczne
+nie ma dostepu do pol i metod niestatycznych gdyż one sa charakterystyczne
+dla obiektów - tzn istnieją dopiero gdy zainicjujemy jakiś obiekt
+
+public static String nazwaUczelni = "UMK"; - pole statyczne
+
+   //metoda statyczna mająca dostęp do innej metody statycznej
+   
+    public static void infoUczelnia() {
+        System.out.println("Moja uczelnia to " + nazwaUczelni);
+        drugaMetoda();
+    }
+    public static void drugaMetoda() {
+        System.out.println("JEstem w drugiej metodzie");
+    }
+	
+	
+----------------
+Dziedziczenie 
+
+- klasa MathTeacher ma wszystkie metody i pola z klasy 
+Person (dziedziczy je) - klasa ta oprócz tego ż eposiada
+swoje pola i metody to jest rozszeżona o wszystkie pola i metody Person
+
+public class MathTeacher extends Person {
+
+    public String school;
+
+    public void teachMath() {
+        System.out.println("I'm teaching math");
+
+    }
+
+    public void sayHello() {
+        System.out.println("Hello my name is " + name);
+        System.out.println("I am " + age);
+    }
+
+
+}
+
+------------
+Konstruktory dla klas roszerzanych
+
+    public MathTeacher(String name, int age, String school) {
+        super(name, age);
+        this.school = school;
+    }
+
+Konstruktor zawiera parametry klasy podstawowej name i age i swoje pole 
+school. Słówko super wywołuje nam konstruktor klasy Person
+this.school = school; przypisuje nam zmienną do zmiennej obiektu.
+
+-----------
+Jeżeli w klasie dziedziczącej wpiszemy tę sama metodę to ona jest 
+wywoływana jako nadrzędna - jest to nadpisywanie metody
+
+Musi być ta sama nazwa metody
+
+----------------------
+Przeciążanie klas
+
+wramach jednej klasy możemy miec kilka metod o tej samej nazwie
+o ile będzie jakieś zróznicowanie w ilości argumentów lub typie args
+
+public class MethodName {
+
+    public void add(int a, int b) {
+        System.out.println(a + b);
+    }
+
+    public void add(int a, int b, int c) {
+        System.out.println(a + b + c);
+    }
+
+    public void add(String a) {
+        System.out.println(a);
+    }
+
+    public void add() {
+        System.out.println(1 + 2);
+    }
+
+}
+
+------------------
+Package
+przykład - com.testeroprogramowania.app.database
+
+com - domena
+testeroprogramowania - adres
+app - katalog
+database - podkatalog
+
+ale moga byc po prostu same nazwy katalogów
+
+package com.testeroprogramowania.app;
+import com.testeroprogramowania.app.view.AccountView;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        AccountView account = new AccountView();
+        
+        
+    }
+    
+}
+
+
+-----------
+
