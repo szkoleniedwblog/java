@@ -217,7 +217,7 @@ po drodze się coś pojawiło odnośnie autoryzacji. Kod który sie wygenrował
 
 Generujemy klucz według naszego maila
 
-ssh-keygen -t rsa -b 4096 -C "witdar2@wp.pl"  
+ssh-keygen -t rsa -b 4096 -C "moj_adres2@wp.pl"  
 
 Po enter - nic nie wpisujemy tylko eneter, później hasła nie podajemy tylko dwa razy enter.
 Pojawi sie info co zostało wygenerowane i gdzie to hasło sie wygenerowało nan naszym kompie.
