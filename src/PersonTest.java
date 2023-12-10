@@ -13,7 +13,7 @@ public class PersonTest {
         teacher.teachMath();
         System.out.println(teacher.school);
 
-        Footballer footballer = new Footballer("John", 12, "Legia");
+        Footballer footballer = new Footballer("John", 12, "Błękitni Raciąż");
 
         //footballer.name = "John";
         //footballer.age = 12;
