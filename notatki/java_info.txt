@@ -695,9 +695,102 @@ w InteliJ.
 
 ----------------
 super - rozszerzenie
-użycie słówka super w klasie potomnej pozwala namna dostep
+Użycie słówka super w klasie potomnej pozwala namna dostep
 nie tylko do konstruktora z klasy nadrzednej
-ale tez do wszystkich pól i metod z klasy nadrzednej. 
+ale też do wszystkich pól i metod z klasy nadrzędnej. 
 Mozemy wywolac tę metode i ja np nadpisując uzupełnić o jakies dodatkowe działanie
+------------------
+final - słowo kluczowe
 
+public static void main(String[] args) {
+        
+		final int x = 2;
+		
+		x = 5; - to nie zadziała bo final jest ostatecznym przypiasaniem.
+ 
+        final Person person = new Person("Tim", 26);
+        person.age = 25; - to zadziała 
+
+        person = new Person("Roger", 22); ale tu już nie zadziała bo obiekt person jst final
+		
+		
+
+    }
+	
+jeżeli w jakiejś klasie dzidziczącej nadpisujemy metodę z klasy 
+nadrzędnej. Jeżeli w klasie nadrżednej metoda ta będzie final to nie nadpiszemy jej
+
+jeżeli klasę oznaczymy jako final to nie możemy nic po niej dziedziczyć
+
+-------------------
+
+Interfejsy
+
+Klasy które maja definicję metod ale nie maja ciała tych metod
+
+Dodajemy go wybierając New > Java Class > Interface
+
+W interefjsach tylko definiujemy metody i ewentualnie ich parametry.
+Nie musimy podawac słówka public - wszystkie w intefejscie są publiczne.
+
+public interface Vehicle {
+
+    void jazda(int speed);
+    void stop();
+
+}
+
+Żeby zaimplementować metody musimy utworzyc klasy które zaimplementują te metody
+Słowko kluczwe implements
+Gdy się podświetli na czerwono możemy kliknąć i wybrac opcję Implement methods
+i wóczas InteliJ sam nam je utworzy z automatu.
+Słowko @Override - informuje o tym że nadpisujemy metody z Vehicle
+
+
+public class Bike implements Vehicle {
+
+    @Override
+    public void jazda(int speed) {
+        System.out.println("Jadę rowerem z prędkościa " + speed);
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Zatrzymuję się rowerem.");
+    }
+}
+
+------------------
+Polimorfizm
+
+Możemy tworzyć obiekt typu Document (to jest klasa nadrzędna)
+ale wskazywac na typ klasy dziedziczącej (ExcelDocument, PdfDocument),
+Wtedy tej samej klasy obiekty mogą mieć różne działania.
+
+
+Document doc = new ExcelDocument();
+doc.getDescription();
+
+Document doc2 = new PdfDocument();
+doc2.getDescription();
+
+
+ public static void main(String[] args) {
+
+        // zamiast tworzyć taką deklarację
+        ExcelDocument document = new ExcelDocument();
+
+        //mozemy stworzyc obiekt nadrzedny Document
+        //tylko możemy wskazac na klasy potomne okreslając tym typ dokumentu
+		//wtedy każdy obiekt wywoluje inne działanie 
+        Document excelDocument = new ExcelDocument();
+        Document pdfDocument = new PdfDocument();
+
+        document.getDescription();
+        excelDocument.getDescription();
+        pdfDocument.getDescription();
+
+    }
+
+---------------
 
