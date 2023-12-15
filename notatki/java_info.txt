@@ -842,3 +842,51 @@ Polimorfizm - praktyczne zastosowanie
 
     }
 
+---------------
+Klasa abstrakcyjna 
+
+package animals;
+
+public abstract class Animal {
+
+    public final static int legs = 4;
+
+    public abstract void sound();	//definijemy tylko definicję metody abstrakcyjnej. Implementajće muszą dostarczyć klasy rozszerzające.
+		
+	// można tez definiowac zwykłą metodę
+	
+    public void sayHello() {
+        System.out.println("Hello. I'm an animal!");
+    }
+
+
+}
+
+------------------
+Konwersja i rzutowaie typów danych
+
+public static void main(String[] args) {
+
+        int a = 2;
+        double b = 4.23;
+
+        double c = a/b;     // a zostaje automatycznie niejawnie przekorwertowana na double
+
+        int d = a/(int)b;       // tu sie nic w tle nie zadzieje
+
+        // saodzielnie musimy przkonwertować double na int
+        // w nawiasie podajemy typ na który chcemy przekonwertować
+
+
+        System.out.println(c);
+        System.out.println(d);
+
+        // rzutowanie typów obiektowych
+		
+		WebDriver driver = new FirefoxDriver();
+
+        FirefoxDriver firefoxDriver = (FirefoxDriver) driver;
+        firefoxDriver.get();
+
+
+    }
