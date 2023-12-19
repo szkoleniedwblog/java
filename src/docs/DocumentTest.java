@@ -8,6 +8,7 @@ public class DocumentTest {
         doc.getDescription();
         Document doc2 = new PdfDocument();
         doc2.getDescription();
+        doc2.getDescription(); // test
 
     }
 
