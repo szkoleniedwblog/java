@@ -1,1 +1,289 @@
-test
+
+Instalujemy GIT - git jest konieczny dla InteliJ ale może tez działac samodzielnie
+Google > Git downloads (https://git-scm.com/downloads)
+Instalujemy
+W trakcie wskazujemy domyślny edytor dla gita np. Notepad++
+Nic nie zmieniamy tylko ten edytor i next next instal.
+Uruchamiamy GIT Bash - jeżeli się podpowie to jest OK.
+----------
+Używanie GIT oddzielnie
+
+Tworzymy lokalne repo GIT
+Tworzymy katalog repo
+Uruchamiamy terminal
+Start > Szukamy Git bash
+używamy dosowych komed żeby dojść do katalogu repo
+wchodzimy do katalogu repo
+sprawdzamy ścieżkę za pomoca komendy pwd
+git init - 		tworzymy pierwsze repozytorium gita
+				oznacza się tez jako gałąź master
+git status - 	Możemy sprawdzić czy repo istnieje i co w nim jest
+				przekopiujemy dowolne pliki do katalogu repo
+git status 		zwraca info o nieśledzonych jeszcze dwóch plikach
+				musimy je dodać do staging area
+git add Aplikacje.txt - za pomocą takiego polecenia móiwmy gitowi że ma śledzić ten plik.
+				(dodaliśmy go do przestrzeni staging area).
+
+git rm --cached Aplikacje.txt - Jeżlei chcemy wycofać ten pliczek do Working area (nie śledzić)
+git add . 		- dodajemy wszystkie nieśłedzone pliki do śłedzenia
+				W tej chwili git śledzi zmiany we wszystkich plikach w tym repo
+				wchodzimy do jakiegos pliku i cos zmianiamy
+git status 		i mamy informacje że coś zostało zmienione
+				Jeżeli uważamy, że zmiany sa już gotowe do dodania to znów używamy
+git add Aplikacje.txt
+
+				teraz chcemy gotowe pliki ze zmianami dodąc do naszego repo
+git commit -m "Dodanieg w pliku Aplikacje drugiego wpisu"
+
+git status - daje nam pusty wynik
+
+				Modyfikujemy znów jeden z plików i git to widzi
+git status zwraca pliki zmienione
+git add . - doda nasze zmiany do
+git restore Wymagania. txt - wycofa nasze zmiany z pliku.
+				Gdy tworzymy plik Wymagania będzie on w wersji wcześniejszej.
+git log - Żeby zoabczyć historię naszych zmianami
+
+				Możemy ustawić inny email użytkownika i jego dane za pomocąq
+git config --global user.email "witdar@wp.pl"
+git config --global user.name " Darek W"
+				Kolejny commit będzię identyfikowany przez to co ustawimy
+
+git add - dodajemy zmiany do przestrzeni,
+git add - kolejne zmiany
+git add - kolejne zmiany
+
+				gdy wszystkie zmiany wprowadzone
+git commit -m "Wiadomość ..." - zapisujemy jako kolejną wersję.
+
+				gdy wprowadzono jakies zmiany przed wykonaniem dodawania do wersji
+				chcemy zweryfikować co zostało zmienione
+git diff Aplikacje.txt - podgląd zmian
+				jeżeli jest ok możemy dodać za pomocą git add
+
+				Jeżęli chcem za pomoca jednek komendy od razu dodac zmiany do wersji i ją skomitować
+git commit -a -m "Zmiany od razu bez dodawania"
+
+q - wyjście z pliku logu
+
+				W chwili gdy zmienimy coś i czeka na dodanie do wersji
+git restore - wycofujemy nasze zmiany
+git add 	- możemy je zatwierdzic i dodać do wersji
+cat ./Wymagania.txt 	-	pozwala wyświetlić zawartośc pliku bezpośrednio w consoli
+
+				W chwili gdy zmiany mamy juz dodane do wersji za pomocą add ale nie skomitowane
+git restore --staged Wymagania.txt
+
+				I teraz można wycofać zmiany całkowicie
+git restore Wymagania.txt
+
+				Gdy mamy juz jakies commity i chcemy przywrócić stan naszych plików do konkretnego
+				commita to z git log kopiujemy jego ID
+git revert ID_COMMITA
+				Otwiera się pliczek z info o wycofywaniu.
+				Gdy zamkniemy to sie proces dokończy.
+				Jeżeli nie zadziała normalne zamknięcie to wpisujemy :wq!
+
+				Jeżeli chcemy sie wycofać gdzię do dużo wczesniejszego commita
+git reset ID_COMMITA
+				Wycofuje wszystkir zmiany do tego commita. Wszystkie zmiany wrzuca do pliku
+				z przygotowanymi zmianami
+
+git revert - wycofuje zmiany do wskazanego commita ale zostaje historia
+git reset - wycofuje zmiany do wskazanego commita czyści tez historię
+
+				Gdy pojawi sie jakiś plik, któego nie chcemy śledzić. Chcemy je ignorować to
+				Musimy stworzyć pliczek gitignore.
+touch .gitignore - tworzymy plik w którym zdefiniujemy pliki i forldery które git ma ignorować
+				w pliku dodajemy
+
+
+				MAmy główną gałąź naszej aplikacji master
+				Gdy chcemy zrobić jakieś dodatkowe gałęzie, na bazie tego naszego mastera ale coś specyficznego
+git branch nazwa_gałęzi - tworzy nową gałąź (kopię master)
+				Żeby sprawdzić jakie mamy gałęzie
+git branch - nie podajmy nazwy
+				z reguły jesteśmy w master. Zeby przejsć do innej gałęzi to
+git checkout nazwa_gałęzi - przechodzimy do innej gałęzi
+				Siedząc na tej gałęzi robimy dowolne zmiany tylko w tej gałęzi o nie dotykamy mastera
+				Wprowadzamy dowolne zmiany w plikach
+git add Aplikacje.txt
+git commit -m "message"
+
+				gdy rprzełączymy sie na na gałąź master nie będzie zmian wprowadzonych w klient101
+git checkout master
+git log
+
+				Przenoszenie zmian z gałęzi dodatkowej do mastera
+				przełączamy sie na gałąź fo któej chcemy domergować zmiany (gdy chcemy dodać do mastera
+				zmiany z innych gałęzi to przełączamy sie na mastera)
+git merge klient101
+				Możemy skasowac teraz gałąź klient101
+git branch -d klient101
+
+				co gdy będzie konflikt
+git merge klient102 - w tym momencie mamy już zmidyfikowany plik na masterze i nie wiadomo którą wersje przyjąć
+				wchodzimy w pliczek i weryfikujemy i popraawiamy tak jak powinno być. Zapisujemy pliczek.
+				zamykamy plik
+git status
+git add
+git commit -m "Ble ble"
+
+				Praktycznie gałęzie - master - poprawna wersja produkcyjna.
+				Coś trzeba zrobić jakiś tsk, funkcjonalność - tworzymy gałąź  i działamy na tej gałęzi.
+				Na koniec gdy będzie ok to merge do mastera.
+
+				JEsteśmy na masterze. Wprowadzamy zmiany w pliku. Dodajemy do wersji ale nie commitujemy.
+				Nagle musimy sie przełączyć na inn gałąź.  Wprowadzone zmiany są wuidczone też na drugiej
+				gałęzi. Chcemy je schować gdzieś do schowka.
+				Wracamy do mastera i zapisujemy nasze zmiany do schowka
+git stash
+				Teraz nie widac zmian z mastera
+				Możemy sie przełączyć na inną gałąż i juz maina ni epowinno być widać.
+
+				Gdy chcemy przywrócić zmiany ze schowka to mozemy to zrobic za pomocą
+git stash applygit
+				ta opcja nadal trzyma zmiany w schowku
+git stash pop   opcja jak wyzej ale nie trzyma już zawartości schowak.
+------------
+TWORZENIE LOKALNEGO REPO I WYPYCHANIE NA GITHUBA
+
+…or create a new repository on the command line
+echo "# testgita" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/szkoleniedwblog/testgita.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/szkoleniedwblog/testgita.git
+git branch -M main
+git push -u origin main
+
+-----------
+Synchronizacja repo lokalnego do repo zdalnego.
+
+			musimy dodac info gdzie znajduje sie nasze repozytorium zdalne
+git remote add origin https://github.com/szkoleniedwblog/testgita.git
+
+git branch -M main - za pomocą tej komendy możemy zmienić nazwę gałęzi głównej na main
+					(my zostawiamy master).
+
+git push -u origin master - wypychamy nasze lokalne repo master na zdalne
+
+po drodze się coś pojawiło odnośnie autoryzacji. Kod który sie wygenrował
+
+Żeby GITHUB nas rozpoznwał musimy sobie wygenerowac klucz SSH i dodac go do naszego gita
+
+Generujemy klucz według naszego maila
+W GIT BASH
+ssh-keygen -t rsa -b 4096 -C "moj_adres2@wp.pl"
+
+Po enter - nic nie wpisujemy tylko eneter, później hasła nie podajemy tylko dwa razy enter.
+Pojawi sie info co zostało wygenerowane i gdzie to hasło sie wygenerowało nan naszym kompie.
+Przykłąd: /c/Users/DariuszWitkowski/.ssh/id_rsa.pub
+
+Wyświetlamy zawartość tego klucza i kopiujemy
+
+cat /c/Users/DariuszWitkowski/.ssh/id_rsa.pub i enter
+
+W GITHUBie tworzymy wpis z naszym wygenerowanym kodem SSH żeby nie logowac sie za każdym razem
+za pomocą usera i hasła
+Przechodzimy do GITHUBA > NAsz profil > Settings > SSH and  ... keys > New SSH keys
+
+Podajemy nazwę dowolną
+podajemy wartość - wszystko co skopiowaliśmy
+
+gdy będziemy próbować dobijać sie do githuba powinien nas juz rozpoznac po tym kluczu.
+
+próbujemy coś wypchnąć na zdalne repo.
+
+logujemy sie na GITHUB . przechodzimy do naszego repo
+
+musimy podac teraz nowy adres do repo zdlanego, który wykorzysta klucz ssh. Wcześniej
+podaliśmy taki adres dla HTTPS.
+
+Szukamy na GITHUB quick instructions dla SSH
+
+W naszym repo przycisk Code i tam przestawiamy na SSH i mamy adres repo.
+
+git remote rm origin - usuwamy info o repozytorium zdalnym HTTPS z naszgo gita
+
+musimy dodac info o repo zdalnym SSH
+
+git remote add origin git@github.com:szkoleniedwblog/testgita.git
+
+
+git push -u origin master - teraz możemy spróbować wypchnąć coś na repo zdalne
+
+-----------
+Pull REQUESTY
+
+Akcja typu - tworzymy nową gałąź w naszym lokalnym repo
+
+git branch - wyśiwetlany jakie są gałęzie
+git branch haslo - tworzymy nową gałąź
+git branch - sprawdzamy czy powstała
+git checkout haslo - przełączamy sie na tę gałąź
+modyfikujemy pliczek dowolny
+
+git add Aplikacje.txt - dodajemy nasze zmiany
+git commit -m "Dodano haslo" - commitujemy zmiany do naszego repo lokalne
+git push -u origin haslo - wypychamy nowa gałąź na githuba
+
+gdy wejdziemy na GITHUB powinno juz być nowa gałąź
+
+przechodzimy na zakładkę Pull request (to jest prośba o to zeby zmergeowac wybrana przez na gałąź do
+mastera
+
+Wybieramy New Pull Request
+wskazujemy base: master i compare: haslo (moja nowa gałązka)
+Klikamy Create PullRequest
+
+Możemy tu wskazać jakiegos usera do reviews - o  ile mamy z prawej
+
+Ponieważ my nie mamy takiej opcji to klikamy Create PullRequest
+
+W zakłfdce Files changed możemy przzyciskiem Review changes -- dodac akceptację, lub odrzucenie lub komentarz
+
+NA zakładce Conversation możemy po akceptacji wszystkich wykonać Merge pull request
+
+Nastepnie Confirm merge i zmiany zostaną na GITHUBIE zmergowane do mastera
+
+teraz musimy zmienić naszego lokalnego repo
+
+pobieramy zmiany z githuba do lokalnego repo.
+
+					sprawdzamy czy nasz agałązka haslo jest aktualna w stosunku do gałązki hasło na remote
+
+git checkout master - przełaczamy sie na mastera
+
+git status sprawdzamy teraz czy master jest aktualny
+
+git sygnalizuje że jest OK ale nie jest to prawda
+
+git fetch origin master - więc musimy pobrać nową wersję na nasz lokalne
+
+							teraz pobraliśy najnowszą wersję z remote na nasz lokal
+
+
+git merge - teraz musimy to zmergeować
+
+wszystko wyrównane
+
+Możemy zastąpić dwie komendy
+git fetch origin master - dotyczy tylko mastera jak chcemy inne to musimy podac też inną nazwę brancha
+i
+git merge
+jedna komendą:
+
+git pull origin master - pobiera wszyskie info z repo zdalnego i od razu probuje je zmergowac z naszym repo lokalnynm
+
+git pull --all   - pobiera wszystkie branhce z repo zdalnego
+
+tak samo możemy wypchnąc nasze lokalne repo na zdalne w całości wszystkie gałęźie
+
+git push --all
+
