@@ -892,3 +892,121 @@ public static void main(String[] args) {
     }
 
     -----------
+Wyjątki
+
+Wyjątki Checked (w metodach musimy wówczas zadeklarować, że
+możemy wyrzucić taki wyjątek).
+Taki wyjątek przerywa program i wyświetla sie ten wyjątek.
+
+Deklaracja w nazwie metody za pomoca słowa throws (tworzy się go 
+z inteliJ - z czerwonej żaróweczki).
+
+Każda metoda która wywołuje metodę z deklaracją obsługi wyjątku tyez musi mieć 
+deklarację obsługi wyjatku. Np.:
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class CheckedExceptions {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        readFile("/src/sddsd.txt");
+    }
+
+    public static void readFile(String path) throws FileNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(path);
+
+    }
+}
+
+Powyżej metoda readFile korzysta z obiektu FileInputStream, 
+który obsługuje wyjątek - deklarujemy throws FileNotFoundException
+
+metoda main któa wywołuje metodę obsługująca wyjątek
+również musi mieć deklarację obsługi tego wyjątku.
+
+-------------
+wyjątki obsługa try catch - wyjątek przerywa program ale tworzy obiekt e
+który ma kilka metod i danych - np getMessage. 
+Możemy z nich skorzystać i bardziej przyjaźnie wyświetlić info o problemie
+
+zamiast deklaracji throws - obsługi wyjątku można skorzystac z 
+drugiej opcji w czerwonej żaróweczce - Surround with try/catch
+
+w bloku try definiujemy jakiś kod, także ten w którym wiemy, że 
+może wyrzucic nam wyjątek - w naszym przypadku metoda readFile()
+
+gdy kod wyrzuci wyjątek - nie chcemy przerywac programu tylko 
+wyłapujemy ten wyjatek i w sekcji catch definiujemy co ma się stac gdy 
+ten wyjątek sie pojawi
+
+wyjątek też jest obiektem - więc możemy się do niego odwołać i 
+cos z niego odczytać
+
+trzeci blok konstrukcji try catch to finally
+działa to tak 
+try - próbujemy coś zrobić i wiemy że może się zdarzyć wyjątek
+catch - gdy sie zdarzy zostanie wykonany ten kod
+finally - wykona sie zawsze bez względu na to czy zdarzy się wyjątek
+czy nie
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class CheckedExceptions {
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("Przed odczytaniem pliku");
+            //readFile("C:\\Users\\Darek\\Desktop\\SELENIUM\\java\\src\\test.txt");
+            readFile("src/test2.txt");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Wyjątek został wyrzucony");
+            System.out.println(e.getMessage());
+
+        } finally {
+            System.out.println("Zamknięcie pliku");
+        }
+    }
+
+    public static void readFile(String path) throws FileNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(path);
+        System.out.println("Czytam plik");
+
+    }
+}
+
+--------
+włąsny wyjątek
+
+Tworzymy klasę, w klasie metodę, która musi rozszerzać klasę
+Exception z pakietu java.lang (domyśłna klasa wyjątków)
+
+public class NoValidBrowserName extends Exception {
+
+	public NoValidBrowserName(String message) {
+		super(message);
+	}
+}
+
+gdy chcemy wywołać ten wyjatek to musimy użyć słowa kluczowego 
+throw new NoValidBrowserName()
+i wskazujemy wyjątek (metodę) przez nas utworzony
+
+wszystkie metody które wywołuja ten wyjątek musimy rozszerzyć 
+o frazę throws NoValidBrowserName
+
+private static WebDriver getsDriver(String name) throws NoValidBrowserName {
+
+        if (name.equals("chrome")) {
+            return new ChromeDriver();
+        } else if (name.equals("firefox")) {
+            return new FirefoxDriver();
+        }
+        throw new NoValidBrowserName("Nieprawidłowa nazwa przeglądarki");
+
+    }
+	
+	

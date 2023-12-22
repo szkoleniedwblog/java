@@ -2,10 +2,10 @@ package drivers;
 
 public class WebDriverTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoValidBrowserName {
 
 
-        WebDriver driver = getsDriver("firefox");
+        WebDriver driver = getsDriver("chrome2");
 
         //WebDriver driver = new ChromeDriver();
         driver.get();
@@ -38,14 +38,14 @@ public class WebDriverTest {
 
     }
 
-    private static WebDriver getsDriver(String name) {
+    private static WebDriver getsDriver(String name) throws NoValidBrowserName {
 
         if (name.equals("chrome")) {
             return new ChromeDriver();
         } else if (name.equals("firefox")) {
             return new FirefoxDriver();
         }
-        return null;
+        throw new NoValidBrowserName("Nieprawidłowa nazwa przeglądarki");
 
     }
 
